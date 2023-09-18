@@ -1,0 +1,100 @@
+class Ticket:
+#Add information within tickets
+    def __init__(self, description, email, creator_name, staff_id):
+
+        self.status = "Open"
+
+        self.response = "Not yet Provided"
+
+        self.description = description
+
+        self.email = email
+
+        self.creator_name = creator_name
+
+        self.staff_id = staff_id
+
+        self.ticketnumber= None
+
+#Internal Tickets' ticket number must follow a counter
+    def generate_ticket_number(self, num):
+        self.ticketnumber = num + 2000
+
+#Responses to use the default "Not yet Provided"
+    def provide_response(self, response):
+        self.response = response
+        self.status = "Closed"
+#Function for submission when staff member have opted for a "Passowrd Change"
+    def password_change(self):
+        if self.description == "password change":
+            password = self.staff_id[0] + self.staff_id[1] + self.creator_name[0]+ self.creator_name[1] + self.creator_name[2]
+        self.response = password
+
+    def ticket_status(self,status):
+        self.status = status
+
+#Seperate class that focuses on its functionality of the ticketing system
+class HelpDesk:
+    def __init__ (self):
+        self.helpdesk = []
+        self.counter = 0
+#Total tickets displayed with the amount of resolved and open tickets either left pending or finsihed
+
+    def display_statistics(self):
+        stats=["total tickets, resolved tickets, open tickets"]
+        print("total ticket number: ", len(self.helpdesk))
+        y = 0
+        for total_tickets in self.helpdesk:
+            if total_tickets.status == "Closed":
+                y+=1
+        print("total ticket number: ", y)
+
+        print("total resolved tickets: ", len(self.helpdesk))
+        z = 0
+        for resolved_tickets in self.helpdesk:
+            if resolved_tickets.status == "Closed":
+                z+=1
+        print("total resolved tickets: ", z)
+
+        print("total open tickets: ", len(self.helpdesk))
+        a = 0
+        for open_tickets in self.helpdesk:
+            if open_tickets.status == "Closed":
+                a+=1
+        print("total open tickets: ", a)
+#Function to create or generate a ticket with the use of the same information in the Ticket class above, with the counter also being included
+
+    def create_ticket(self, description, email, creator_name, staff_id):
+        self.counter+=1
+        new_ticket = Ticket( description, email, creator_name, staff_id)
+        new_ticket.generate_ticket_number(self.counter)
+        self.helpdesk.append(new_ticket)
+#The function is used to show a full display of the ticket the user has created alongside the ticket number, the name of the ticket creator, email address, staffID, the reponse to that ticket, as well as the description for a ticket with an issue
+    def display_tickets(self):
+        for Ticket in self.helpdesk:
+            print(Ticket.ticketnumber, Ticket.creator_name, Ticket.email, Ticket.staff_id, Ticket.description, Ticket.response)
+
+#The function is to simulate when reopening tickets for a single ticket status to be set as "Reopen"
+    def reopen_ticket(self,ticketid):
+        for renew in self.helpdesk:
+            if renew==ticketid:
+                renew.ticket_status("Reopen")
+#The function gives user an option to respond to tickets  
+    def respond(self,id,response):
+        for reply in self.helpdesk:
+            if reply.ticketnumber==id:
+                reply.provide_response(response)
+#Instances below to call on the functions above, while having the class "HelpDesk" as the main 
+main=HelpDesk()
+main.create_ticket("Need help with login. ", "vicky@whitecliffe.co.nz", "Vicky", "VICKYY")
+main.create_ticket("Can't access files from onedrive. ", "ana@whitecliffe.co.nz", "Ana", "ANNA")
+main.create_ticket("Password change. ", "Zach@whitecliffe.co.nz", "Zachary", "ZACHARYS")
+
+main.respond(2001, "Here is your new login information")
+main.respond(2002, "Here are all your files from the onedrive")
+main.respond(2003, "New password generated")
+
+main.display_tickets()
+
+main.display_statistics() 
+#You are now able to call all these function and have them shown on the terminal

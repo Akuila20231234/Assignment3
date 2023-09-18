@@ -1,0 +1,31 @@
+#Seperation of concerns principle is used to divide a system into independent parts to focus on one thing at a time
+#original code: 
+import turtle #Use the syntax to draw your shape
+s=turtle.Turtle()
+s.forward(100) #This line of code is to direct the line to move forward
+s.right(90) #Likewise this code is to move the line to where you want, in this case move right
+s.forward(100) #Repeat the process in order to get the shpae you want
+s.right(90)
+s.forward(100)
+s.right(90)
+s.forward(100)
+turtle.exitonclick() #Call it to draw the shape of your choosing
+
+#altered code: in this code it breaks down everything in a more professional manner and it gives you a clear picture of what each function does
+class Shape:
+    def __init__(self, color):
+        self.t = turtle.Turtle()
+        self.t.color(color)
+
+class square(Shape):
+    def __init__(self,color,side_length):
+        super().__init__(color)
+        self.side_length = side_length
+#This class focues on the shape of the object in question, which includes the color as well as the side length
+    def draw(self):
+        for i in range(2):
+            self.t.forward(self.side_length)
+            self.t.right(90)
+            self.t.forward(self.side_length)
+            self.t.right(90)
+#The last bit is used to figure out which length is fit for your shape and you won't have to repeat yourself as like the one shown above

@@ -1,0 +1,11 @@
+#DRY principle main function is to avoid any repeating code so you won't repeat yourself
+#Here we have a code that contain the values of a shape, a rectangle
+width=10
+length=5
+area=length*width #To find the area of a recatangle we must use this formula: length multiply by the width
+print(area) #Print to calculate the area of that rectangle
+
+#In this simpler code it does the same thing as the one on top but with a more sleek and straightforward approach without repeating the same sequence over and over
+def calculate_area(length,width): #A single line of code that has all the attributes
+    return length *width
+    #Call the function and you have the results present
