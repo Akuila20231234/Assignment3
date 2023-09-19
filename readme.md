@@ -54,3 +54,11 @@ class square(Shape):
             self.t.right(90)
 
 # 3rd Code: SOLID Principle 
+Greetings! This is the final code I will go over and it is the longest out of the three. Its very long because it covers 5 different principles and is all incorporated into one. I am referring to the "SOLID" principle. With this final code I will share where these 5 different principles will be present and explain what each role they play. 
+# Single Responsibility Principle:
+With this principle it is important that each class should have only one responsibility or job. As you can see each class is seperate and focus on a single task. Firstly, we have a class named "Ticket" which helps the user create the tickets. Secondly, the next class is under "HelpDesk" and that will focus on the different functions in your ticketing system. Afterwards, the user will have the last class assigned as your main, so the code may run and view the tickets the user has created. 
+# Open/Closed Principle: 
+This priniciple focuses on the whether your code is open for extensions but closed for modification. This means that you should write code that can be extended with new functionality, without having to modify the existing code. Again, we refer back to the classes we talked about earlier. In the first class, the "Ticket" class, we mentioned that is was used to create the tickets, well the second class ("HelpDesk") helps modify those tickets. 
+# Liskov Substitution Principle
+This principle is for code such as subtypes to be substitued in place of their parent types without causing any issues. Like for instance, when submitting tickets this method creates a new Ticket within the first class with the given parameters and subs it to the tickets list.
+# Interface Segregation Principle
