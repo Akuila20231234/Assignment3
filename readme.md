@@ -62,3 +62,11 @@ This priniciple focuses on the whether your code is open for extensions but clos
 # Liskov Substitution Principle
 This principle is for code such as subtypes to be substitued in place of their parent types without causing any issues. Like for instance, when submitting tickets this method creates a new Ticket within the first class with the given parameters and subs it to the tickets list.
 # Interface Segregation Principle
+The whole idea behind the ISP principle is to provide the smallest number of methods in a class. This leads to focused definitions, often seperating a design into mulitple classes to isolate the imapct of any changes. For example, the user must then have another class to focus on the different functions in your ticketing system and have everything run through that main class. Set that as "class HelpDesk". This class will help you represent the entire helpdesk system. This class will cover how you will create tickets, display tickets, reopen tickets, respond to tickets, as well as display the statistics of those tickets.  
+# Dependency Inverion Principle
+This method or principle is the last one and it focuses on the abstractions of your code and how it should not depend upon the details. Instead the details should depend upon the abstractions. So what does that mean? When displaying statistics of the users tickets we can assign "HelpDesk" instead of "stats" to provide the interface to use in your concrete classes, like so: 
+def display_statistics(self):
+        stats=["total tickets, resolved tickets, open tickets"]
+        print("total ticket number: ", len(self.helpdesk))
+# Conclusion 
+That is it for all three of the codes, these principles will help ensure that your code is maintainable, extensible, and testable and it has really helped me out. So, thank you so much for coming along and viewing my readme!
